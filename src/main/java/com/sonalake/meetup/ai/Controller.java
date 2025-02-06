@@ -15,7 +15,7 @@ public abstract class Controller {
     @Value("classpath:/prompts/system-prompt.st")
     private Resource systemPromptResource;
 
-    Prompt systemPrompt;
+    protected Prompt systemPrompt;
 
     /**
      * Initializes the systemPrompt field by reading the content of the resource
