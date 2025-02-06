@@ -1,4 +1,4 @@
-package com.sonalake.meetup.ai;
+package com.sonalake.meetup.ai.examples;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.PromptTemplate;
@@ -16,7 +16,7 @@ import static ch.qos.logback.core.CoreConstants.EMPTY_STRING;
 
 @RestController
 @RequestMapping("/ai")
-public class StuffingController extends Controller{
+public class StuffingController extends Controller {
     private final ChatClient chatClient;
 
     @Value("classpath:/prompts/stuffing-prompt.st")
@@ -26,7 +26,7 @@ public class StuffingController extends Controller{
     private Resource stuffingContextResource;
 
     public StuffingController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
+        this.chatClient = chatClientBuilder.defaultSystem(systemPromptResource).build();
     }
 
     /**
@@ -45,7 +45,7 @@ public class StuffingController extends Controller{
         String userPrompt = new PromptTemplate(stuffingPromptResource).create(model).getContents();
 
         return chatClient
-                .prompt(systemPrompt)
+                .prompt()
                 .user(userPrompt)
                 .call()
                 .content();
