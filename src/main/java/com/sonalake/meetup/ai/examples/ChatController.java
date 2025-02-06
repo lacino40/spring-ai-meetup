@@ -1,4 +1,4 @@
-package com.sonalake.meetup.ai;
+package com.sonalake.meetup.ai.examples;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,9 @@ public class ChatController extends Controller {
     private final ChatClient chatClient;
 
     public ChatController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
+        this.chatClient = chatClientBuilder
+                .defaultSystem(systemPromptResource)
+                .build();
     }
 
     /**
@@ -23,7 +25,7 @@ public class ChatController extends Controller {
     public String chat(@RequestParam(defaultValue = "Hi!", name = "prompt") String chatPrompt) {
 
         return chatClient
-                .prompt(systemPrompt)
+                .prompt()
                 .user(chatPrompt)
                 .call()
                 .content();
