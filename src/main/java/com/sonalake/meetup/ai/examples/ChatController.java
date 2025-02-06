@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ChatController extends Controller {
-    private final ChatClient chatClient;
 
     public ChatController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder
-                .defaultSystem(systemPromptResource)
-                .build();
+        super(chatClientBuilder);
     }
 
     /**
