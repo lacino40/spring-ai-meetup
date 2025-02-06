@@ -39,7 +39,7 @@ public class StuffingController extends Controller{
      */
     @GetMapping("stuffing")
     public String stuffing(@RequestParam(name = "stuff", defaultValue = "false", required = false) boolean stuffingEnabled,
-                           @RequestParam(name = "question") String questionPrompt) {
+                           @RequestParam(name = "question", defaultValue = "Hi!") String questionPrompt) {
 
         Map<String, Object> model = getModel(questionPrompt, stuffingEnabled);
         String userPrompt = new PromptTemplate(stuffingPromptResource).create(model).getContents();
