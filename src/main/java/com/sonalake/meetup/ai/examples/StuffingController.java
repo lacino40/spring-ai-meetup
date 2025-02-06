@@ -17,8 +17,6 @@ import static ch.qos.logback.core.CoreConstants.EMPTY_STRING;
 @RestController
 @RequestMapping("/ai")
 public class StuffingController extends Controller {
-    private final ChatClient chatClient;
-
     @Value("classpath:/prompts/stuffing-prompt.st")
     private Resource stuffingPromptResource;
 
@@ -26,7 +24,7 @@ public class StuffingController extends Controller {
     private Resource stuffingContextResource;
 
     public StuffingController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.defaultSystem(systemPromptResource).build();
+        super(chatClientBuilder);
     }
 
     /**
