@@ -1,4 +1,4 @@
-package com.sonalake.meetup.ai;
+package com.sonalake.meetup.ai.examples;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -13,7 +13,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @RequestMapping("/ai")
 public abstract class Controller {
     @Value("classpath:/prompts/system-prompt.st")
-    private Resource systemPromptResource;
+    protected Resource systemPromptResource;
 
     protected Prompt systemPrompt;
 
