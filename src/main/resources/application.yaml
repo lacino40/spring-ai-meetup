@@ -3,7 +3,7 @@ spring:
     name: spring-ai-meetup
   ai:
     ollama:
-      embedding:
+      chat:
         model: llama3.2
 
 service:
