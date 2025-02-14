@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static ch.qos.logback.core.CoreConstants.EMPTY_STRING;
@@ -64,26 +63,13 @@ public class StuffingController {
      *         the provided question and context
      */
     private Map<String, Object> getModel(String questionPrompt, boolean stuffingEnabled) {
-        Map<String, Object> model = getDefaultModel();
 
-        if(stuffingEnabled) {
-            model.put("question", questionPrompt);
-            model.put("context", stuffingContextResource);
+        if(!stuffingEnabled) {
+            return Map.of("question", EMPTY_STRING,
+                          "context", EMPTY_STRING);
         }
 
-        return model;
-    }
-
-    /**
-     * Creates and returns a default model represented as a map with pre-defined
-     * key-value pairs for "question" and "context", both initialized to empty strings.
-     *
-     * @return a map containing default values for the "question" and "context" keys
-     */
-    private Map<String, Object> getDefaultModel() {
-        Map<String, Object> defaultModel = new HashMap<>();
-        defaultModel.put("question", EMPTY_STRING);
-        defaultModel.put("context", EMPTY_STRING);
-        return defaultModel;
+        return Map.of("question", questionPrompt,
+                      "context", stuffingContextResource);
     }
 }

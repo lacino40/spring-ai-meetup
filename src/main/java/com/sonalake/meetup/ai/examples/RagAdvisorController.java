@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -71,13 +70,18 @@ public class RagAdvisorController {
                 .content();
     }
 
+    /**
+     * Constructs a model containing a question and the text of the provided documents.
+     *
+     * @param question  the question string to be included in the model
+     * @param documents a list of documents whose text content will be aggregated
+     * @return a map containing the question as "question" and the aggregated document text as "documents"
+     */
     private Map<String, Object> getModel(String question, List<Document> documents) {
         Optional<String> docs = documents.stream().map(Document::getText).reduce((a, b) -> a + "\n" + b);
 
-        Map<String, Object> model = new HashMap<>();
-        model.put("question", question);
-        model.put("documents", docs.orElse(EMPTY_STRING));
-
-        return model;
+        return Map.of("question", question,
+                      "documents", docs.orElse(EMPTY_STRING)
+        );
      }
 }
