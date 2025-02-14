@@ -1,5 +1,8 @@
 package com.sonalake.meetup.ai;
 
+import com.sonalake.meetup.ai.service.WeatherProperties;
+import com.sonalake.meetup.ai.service.WeatherService;
+import com.sonalake.meetup.ai.service.WeatherServiceImpl;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
@@ -9,6 +12,7 @@ import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Description;
 import org.springframework.core.io.Resource;
 
 import java.io.File;
@@ -54,4 +58,11 @@ public class MeetupConfiguration {
 
         return simpleVectorStore;
     }
+
+    @Bean
+    @Description("Get the current weather forecast for the given city")
+    public WeatherService weatherService(WeatherProperties weatherProperties) {
+        return new WeatherServiceImpl(weatherProperties);
+    }
+
 }
