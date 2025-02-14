@@ -8,6 +8,7 @@ import org.springframework.ai.model.function.FunctionCallback;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +31,7 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
-    @RequestMapping("forecast")
+    @GetMapping("forecast")
     public String forecast(@RequestParam(defaultValue = "London", name = "city") String city) {
         Map<String, Object> model = Map.of("city", city);
         OllamaOptions ollamaOptions = OllamaOptions.builder().model(LLAMA3_2).build();
