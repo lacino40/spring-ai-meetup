@@ -3,7 +3,6 @@ package com.sonalake.meetup.ai;
 import com.sonalake.meetup.ai.service.WeatherProperties;
 import com.sonalake.meetup.ai.service.WeatherService;
 import com.sonalake.meetup.ai.service.WeatherServiceImpl;
-import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.reader.TextReader;
@@ -20,20 +19,12 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @Configuration
-public class MeetupConfiguration {
-    @Value("classpath:/prompts/system-prompt.st")
-    public Resource systemPromptResource;
-
+public class AiMeetupConfiguration {
     @Value("classpath:/context/theory-of-AiMeetup-relativity.txt")
     public Resource ragTxtContext;
 
     @Value("vector-store.json")
     private String vectorStoreName;
-
-    @Bean
-    public ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
-        return  chatClientBuilder.defaultSystem(systemPromptResource).build();
-    }
 
     @Bean
     public SimpleVectorStore simpleVectorStore(EmbeddingModel embeddingModel) {
