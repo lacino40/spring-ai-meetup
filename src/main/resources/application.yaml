@@ -5,6 +5,10 @@ spring:
     ollama:
       chat:
         model: llama3.2
+    chat:
+      client:
+        # when multiply chat clients configured set to false
+        enabled: true
 
 service:
   weather:
