@@ -4,16 +4,20 @@ import com.sonalake.meetup.ai.service.WeatherProperties;
 import com.sonalake.meetup.ai.service.WeatherService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.ai.chat.memory.InMemoryChatMemory;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,16 +37,32 @@ public class AiMeetupConfiguration {
     private String vectorStoreName;
 
     @Bean
-    @ConditionalOnProperty(name = "spring.ai.chat.client.enabled", havingValue = "true")
-    public ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
-        return  chatClientBuilder
+    @Primary
+    public ChatClient chatClient(OpenAiChatModel openAiChatModel) {
+        return  ChatClient
+                .builder(openAiChatModel)
                 .defaultSystem(systemPromptResource)
-                .defaultAdvisors(new MessageChatMemoryAdvisor(new InMemoryChatMemory()))
+                .defaultAdvisors(
+                        new MessageChatMemoryAdvisor(new InMemoryChatMemory()),
+                        new SafeGuardAdvisor(List.of("fool", "stupid"))
+                )
                 .build();
     }
 
     @Bean
-    public SimpleVectorStore simpleVectorStore(EmbeddingModel embeddingModel) {
+    public ChatClient ollamaChatClient(OllamaChatModel ollamaChatModel) {
+        return  ChatClient
+                .builder(ollamaChatModel)
+                .defaultSystem(systemPromptResource)
+                .defaultAdvisors(
+                        new MessageChatMemoryAdvisor(new InMemoryChatMemory()),
+                        new SafeGuardAdvisor(List.of("fool", "stupid"))
+                )
+                .build();
+    }
+
+    @Bean
+    public SimpleVectorStore simpleVectorStore(@Qualifier("openAiEmbeddingModel") EmbeddingModel embeddingModel) {
         SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
         File vectorStoreFile = Paths.get(vectorStoreName).toFile();
 
