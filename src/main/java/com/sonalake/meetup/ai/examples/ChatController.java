@@ -1,8 +1,6 @@
 package com.sonalake.meetup.ai.examples;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
-import org.springframework.ai.chat.memory.InMemoryChatMemory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,10 +14,7 @@ public class ChatController {
     private final TextToSpeechController textToSpeechController;
 
     public ChatController(ChatClient chatClient, TextToSpeechController textToSpeechController) {
-        this.chatClient = chatClient
-                .mutate()
-                .defaultAdvisors(new MessageChatMemoryAdvisor(new InMemoryChatMemory()))
-                .build();
+        this.chatClient = chatClient;
         this.textToSpeechController = textToSpeechController;
     }
 
