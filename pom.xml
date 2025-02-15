@@ -16,7 +16,7 @@
         <java.version>23</java.version>
         <lombok.version>1.18.30</lombok.version>
         <commons.vesrion>2.6</commons.vesrion>
-        <spring-ai.version>1.0.0-M5</spring-ai.version>
+        <spring-ai.version>1.0.0-M6</spring-ai.version>
     </properties>
 
     <dependencies>
