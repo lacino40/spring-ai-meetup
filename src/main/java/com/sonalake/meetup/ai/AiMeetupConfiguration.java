@@ -11,8 +11,8 @@ import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Description;
 import org.springframework.core.io.Resource;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -51,9 +51,12 @@ public class AiMeetupConfiguration {
     }
 
     @Bean
-    @Description("Get the current weather forecast for the given city")
-    public WeatherService weatherService(WeatherProperties weatherProperties) {
-        return new WeatherServiceImpl(weatherProperties);
+    public WeatherService weatherService(WeatherProperties weatherProperties, RestTemplate restTemplate) {
+        return new WeatherServiceImpl(weatherProperties, restTemplate);
     }
 
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }
