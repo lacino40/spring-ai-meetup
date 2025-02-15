@@ -2,6 +2,12 @@ spring:
   application:
     name: spring-ai-meetup
   ai:
+    openai:
+      # load the OpenAI API key from the 'openai.key' environment variable or system property
+      api-key: ${openai.key}
+      chat:
+        options:
+          model: gpt-4o
     ollama:
       chat:
         model: llama3.2
