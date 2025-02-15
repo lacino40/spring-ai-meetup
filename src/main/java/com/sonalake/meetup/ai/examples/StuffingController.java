@@ -38,7 +38,7 @@ public class StuffingController {
      */
     @GetMapping("stuffing")
     public String stuffing(@RequestParam(name = "stuff", defaultValue = "false", required = false) boolean stuffingEnabled,
-                           @RequestParam(name = "question", defaultValue = "What is purpose of AI Meetup Relativity ?") String questionPrompt) {
+                           @RequestParam(name = "question", defaultValue = "In which year will the AI Meetup Theory of Relativity be introduced ?") String questionPrompt) {
 
         Map<String, Object> model = getModel(questionPrompt, stuffingEnabled);
         String userPrompt = new PromptTemplate(stuffingPromptResource).create(model).getContents();
