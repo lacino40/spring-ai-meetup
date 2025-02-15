@@ -2,7 +2,6 @@ package com.sonalake.meetup.ai;
 
 import com.sonalake.meetup.ai.service.WeatherProperties;
 import com.sonalake.meetup.ai.service.WeatherService;
-import com.sonalake.meetup.ai.service.WeatherServiceImpl;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.InMemoryChatMemory;
@@ -68,7 +67,7 @@ public class AiMeetupConfiguration {
 
     @Bean
     public WeatherService weatherService(WeatherProperties weatherProperties, RestTemplate restTemplate) {
-        return new WeatherServiceImpl(weatherProperties, restTemplate);
+        return new WeatherService(weatherProperties, restTemplate);
     }
 
     @Bean
