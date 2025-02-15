@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import static ch.qos.logback.core.CoreConstants.EMPTY_STRING;
-import static com.sonalake.meetup.utils.Utils.resourceToString;
 
 
 @RestController
@@ -30,9 +29,6 @@ public class RagAdvisorController {
 
     @Value( "classpath:/prompts/rag-prompt.st")
     private Resource ragPromptResource;
-
-    @Value( "classpath:/prompts/rag-prompt-advisor.st")
-    private Resource ragPromptAdvisorResource;
 
     public RagAdvisorController(ChatClient chatClient, SimpleVectorStore simpleVectorStore) {
         this.chatClient = chatClient;
@@ -57,14 +53,13 @@ public class RagAdvisorController {
     @GetMapping("rag/advisor")
     public String ragAdvisor(@RequestParam(defaultValue = "What are the two postulates of AiMeetup relativity ?", name = "question") String question) {
         SearchRequest searchRequest = SearchRequest.builder().query(question).topK(10).build();
-        String userTextAdvise = resourceToString(ragPromptAdvisorResource);
 
         return chatClient
                 .prompt()
                 .user(question)
                 .advisors(
                         new SafeGuardAdvisor(List.of("fool", "stupid")),
-                        new QuestionAnswerAdvisor(simpleVectorStore, searchRequest, userTextAdvise)
+                        new QuestionAnswerAdvisor(simpleVectorStore, searchRequest)
                 )
                 .call()
                 .content();
