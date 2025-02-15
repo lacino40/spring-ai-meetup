@@ -16,11 +16,12 @@ public class WeatherServiceImpl implements WeatherService {
     private static final Logger LOG = Logger.getLogger(WeatherServiceImpl.class.getName());
 
     private final WeatherProperties weatherProperties;
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public WeatherServiceImpl(WeatherProperties weatherProperties) {
+    public WeatherServiceImpl(WeatherProperties weatherProperties, RestTemplate restTemplate) {
         this.weatherProperties = weatherProperties;
+        this.restTemplate = restTemplate;
     }
 
     public OpenWeatherDto.Forecast getWeather(Map<String, Object> model) {
