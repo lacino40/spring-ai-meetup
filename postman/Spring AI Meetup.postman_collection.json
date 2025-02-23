@@ -1,0 +1,491 @@
+{
+	"info": {
+		"_postman_id": "25e012ee-aed4-4aab-9e9a-dc4fbcfa2036",
+		"name": "Spring AI Meetup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8795616"
+	},
+	"item": [
+		{
+			"name": "Demo1: Chat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/chat?prompt=tell me a joke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"chat"
+					],
+					"query": [
+						{
+							"key": "prompt",
+							"value": "tell me a joke"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo1.1: Chat Ollama",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/ollama/chat?prompt=tell me a joke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"ollama",
+						"chat"
+					],
+					"query": [
+						{
+							"key": "prompt",
+							"value": "tell me a joke"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo2: Stuffing",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/stuffing?stuff=true&question=In which year will the AI Meetup Theory of Relativity be introduced ?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"stuffing"
+					],
+					"query": [
+						{
+							"key": "stuff",
+							"value": "true"
+						},
+						{
+							"key": "question",
+							"value": "In which year will the AI Meetup Theory of Relativity be introduced ?"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo3: Rag",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/rag?question=What are the two postulates of AiMeetup relativity?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"rag"
+					],
+					"query": [
+						{
+							"key": "question",
+							"value": "What are the two postulates of AiMeetup relativity?"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo4: Rag with advisor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/rag/advisor?question=What are the two postulates of AiMeetup relativity?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"rag",
+						"advisor"
+					],
+					"query": [
+						{
+							"key": "question",
+							"value": "What are the two postulates of AiMeetup relativity?"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo5: Weather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/forecast?city=Dublin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Dublin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo6: Movie franchise",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/movie?franchise=Alien",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"movie"
+					],
+					"query": [
+						{
+							"key": "franchise",
+							"value": "Alien"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo7: JSON Movie franchise",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/movie/json?franchise=Alien",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"movie",
+						"json"
+					],
+					"query": [
+						{
+							"key": "franchise",
+							"value": "Alien"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo8: Text to speech",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/tts?prompt=Hello, this is a text-to-speech example",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"tts"
+					],
+					"query": [
+						{
+							"key": "prompt",
+							"value": "Hello, this is a text-to-speech example"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo9: Text to speech chat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/chat/tts?prompt=tell me a joke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"chat",
+						"tts"
+					],
+					"query": [
+						{
+							"key": "prompt",
+							"value": "tell me a joke"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Demo10: Image generation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ai/image?prompt=AI future is exciting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ai",
+						"image"
+					],
+					"query": [
+						{
+							"key": "prompt",
+							"value": "AI future is exciting"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API: List of models",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{vault:openai-api:token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.openai.com/v1/models",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API: Llama Chat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"model\": \"llama3.2\",\r\n  \"messages\": [\r\n    { \"role\": \"system\", \"content\": \"If you don't know, replay with sentence \\\"I don't know\\\".\" },\r\n    { \"role\": \"user\", \"content\": \"Tell me a joke about java meetup\" }\r\n  ],\r\n  \"temperature\": 1,\r\n  \"max_completion_tokens\": 2048,\r\n  \"top_p\": 1,\r\n  \"frequency_penalty\": 0,\r\n  \"presence_penalty\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:11434/v1/chat/completions",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "11434",
+					"path": [
+						"v1",
+						"chat",
+						"completions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API: OpenAI Chat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"model\": \"gpt-4o\",\r\n  \"messages\": [\r\n    { \"role\": \"system\", \"content\": \"If you don't know, replay with sentence \\\"I don't know\\\".\" },\r\n    { \"role\": \"user\", \"content\": \"Tell me a joke about java meetup\" }\r\n  ],\r\n  \"temperature\": 1,\r\n  \"max_completion_tokens\": 2048,\r\n  \"top_p\": 1,\r\n  \"frequency_penalty\": 0,\r\n  \"presence_penalty\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.openai.com/v1/chat/completions",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"chat",
+						"completions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API: OpenAI Text to speech",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{vault:openai-api:token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"tts-1\",\r\n    \"input\": \"The quick brown fox jumped over the lazy dog.\",\r\n    \"voice\": \"alloy\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.openai.com/v1/audio/speech",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"audio",
+						"speech"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API: OpenAI Image generation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{vault:openai-api:token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"dall-e-3\",\r\n    \"prompt\": \"AI future is exciting\",\r\n    \"n\": 1,\r\n    \"size\": \"1024x1024\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.openai.com/v1/images/generations",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"images",
+						"generations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
