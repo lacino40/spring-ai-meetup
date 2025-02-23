@@ -38,6 +38,8 @@ Before you begin, ensure you have met the following requirements
 - `service.weather.open-weather.api-key` **(optional)** - is a key that stores the unique API key required to access data from the
   OpenWeatherMap API.
 
+Project uses `Spring AI version 1.0.0-M6`
+
 To generate and obtain `openai.key` API key:
 1. Visit [OpenAI's website](https://platform.openai.com/) and log in with your credentials. If you don’t have an account, create one by signing up.
 2. Navigate to your account settings by clicking on your profile icon in the top right corner. Select **"API Keys"** from the dropdown menu or go directly to the [API Keys page](https://platform.openai.com/account/api-keys).
@@ -54,3 +56,7 @@ However, if `service.weather.open-weather.api-key` is not provided or invalid, t
 mechanism implemented. It will fall back to use mock data for weather information. This mock data is stored in a file
 named `open-weather-mock.json`, which is part of application's resources. This file contains pre-set, static weather
 data.
+
+### Run
+- build the project: `mvn clean install`
+- run the application: `java -jar target/spring-ai-meetup-1.0-SNAPSHOT.jar -Dopenai.key=<open-ai-key> -Dservice.weather.open-weather.api-key=<open-weather-api-key>`
