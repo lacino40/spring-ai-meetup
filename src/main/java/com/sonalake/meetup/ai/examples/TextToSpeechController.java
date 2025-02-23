@@ -34,7 +34,8 @@ public class TextToSpeechController {
 
     @PostConstruct
     public void init() {
-        speechModel = new OpenAiAudioSpeechModel(new OpenAiAudioApi(openAiToken));
+        OpenAiAudioApi openAiAudioApi = new OpenAiAudioApi.Builder().apiKey(openAiToken).build();
+        speechModel = new OpenAiAudioSpeechModel(openAiAudioApi);
         speechOptions = OpenAiAudioSpeechOptions.builder()
                 .responseFormat(MP3)
                 .voice(NOVA)
