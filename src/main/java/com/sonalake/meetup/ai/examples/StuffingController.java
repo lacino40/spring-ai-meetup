@@ -21,7 +21,7 @@ public class StuffingController {
     @Value("classpath:/prompts/stuffing-prompt.st")
     private Resource stuffingPromptResource;
 
-    @Value("classpath:/context/stuffing-context.st")
+    @Value("classpath:/context/stuffing-context.txt")
     private Resource stuffingContextResource;
 
     public StuffingController(ChatClient chatClient) {
