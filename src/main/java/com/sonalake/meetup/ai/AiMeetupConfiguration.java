@@ -72,13 +72,20 @@ public class AiMeetupConfiguration {
         }
 
         /*
+            ETL pipeline  (Extract, Transform, Load)
+        */
+
+        /* Extract:
             smaller, focused chunks of text allow better query matching, ensuring that only the most relevant
             parts of the text are retrieved, rather than an entire large document
          */
         TextReader textReader = new TextReader(ragTxtContext);
         TokenTextSplitter tokenTextSplitter = new TokenTextSplitter(50, 100, 50, 100, true);
+
+        /* Transform */
         List<Document> documents = tokenTextSplitter.apply(textReader.get());
 
+        /* Load */
         simpleVectorStore.add(documents);
         simpleVectorStore.save(vectorStoreFile);
 
