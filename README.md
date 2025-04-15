@@ -38,7 +38,7 @@ Before you begin, ensure you have met the following requirements
 - `service.weather.open-weather.api-key` **(optional)** - is a key that stores the unique API key required to access data from the
   OpenWeatherMap API.
 
-Project uses `Spring AI version 1.0.0-M6`
+Project uses `Spring AI version 1.0.0-M7`
 
 To generate and obtain `openai.key` API key:
 1. Visit [OpenAI's website](https://platform.openai.com/) and log in with your credentials. If you don’t have an account, create one by signing up.
